@@ -1,0 +1,36 @@
+from google.adk.agents import LlmAgent
+from google.adk.tools import AgentTool
+
+from .services.llm import MODEL
+from .tools.sql import SCHEMA, execute_sql
+
+# --- Sub-agent: genera ed esegue la query SQL ---
+# Gira in sub-sessione isolata, i suoi eventi non inquinano il context del supervisor.
+
+sql_executor = LlmAgent(
+    name="sql_executor",
+    model=MODEL,
+    description="Riceve una domanda in linguaggio naturale e risponde interrogando il database.",
+    instruction=f"""Sei un esperto SQL. Hai accesso a questo database:
+{SCHEMA}
+Usa il tool execute_sql per rispondere alla domanda con una query SELECT.
+Non eseguire mai INSERT, UPDATE, DELETE o DROP.
+Restituisci i dati in modo chiaro e leggibile.""",
+    tools=[execute_sql],
+    output_key="risultato_query",
+)
+
+# --- Supervisor: interpreta la richiesta e delega al sub-agent ---
+
+root_agent = LlmAgent(
+    name="sql_supervisor",
+    model=MODEL,
+    description="Supervisor che risponde a domande sui dati aziendali delegando l'esecuzione SQL.",
+    instruction="""Sei un assistente aziendale. Rispondi sempre in italiano.
+Quando l'utente fa una domanda sui dati aziendali (clienti, fatture, consumi),
+usa il tool sql_executor per ottenere la risposta dal database.
+Presenta il risultato in modo chiaro e professionale.""",
+    tools=[AgentTool(agent=sql_executor)],
+)
+
+

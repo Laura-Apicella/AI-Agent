@@ -1,0 +1,9 @@
+db
+pdfs
+docs
+.venv
+.env
+.env
+**/.adk
+**/__pycache__
+.claude
