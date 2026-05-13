@@ -1,14 +1,15 @@
-
 # Tutto ignorato di default
 *
+**/*
 
-# Eccezioni — solo questi file vengono inclusi
+# Eccezioni
 !README.md
 !.gitignore
 !agent_energy/
+!agent_energy/**
+agent_energy/**
 !agent_energy/agent.py
-agent_energy/*
-!agent_energy/__init__.py
+
 =======
 # Byte-compiled / optimized / DLL files
 __pycache__/
