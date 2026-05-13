@@ -102,6 +102,6 @@ Agent:  Identity verified. ✅
 
 ## 📌 Notes
 
-- The agent always responds in **English* (target user language)
+- The agent always responds in *English* (target user language)
 - No personal data is ever returned before successful authentication
 - The `.env` file and database are excluded from this repository for privacy reasons
