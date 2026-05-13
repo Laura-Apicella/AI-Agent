@@ -41,7 +41,7 @@ The agent is built as a single-file implementation with:
 - **6 tools** connected to a SQLite database (200 customers, 600 bills, 1200 meter readings)
 - **Authentication gate** — no data is returned without prior identity verification
 - **Matplotlib integration** for chart generation
-- **Prompt instructions** in Italian (the agent's target language)
+- **Prompt instructions** in English (the agent's target language)
 
 ---
 
