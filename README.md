@@ -57,6 +57,14 @@ The agent is built as a single-file implementation with:
 
 ## 🚀 How to Run
 
+📌 Prerequisites
+
+Make sure you have installed:
+
+Python 3.11+
+uv package manager
+A Gemini API key from Google AI Studio
+
 ```bash
 # 1. Clone the repo
 git clone https://github.com/Laura-Apicella/AI-Agent.git
