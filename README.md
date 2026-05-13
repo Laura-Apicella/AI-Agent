@@ -61,9 +61,9 @@ The agent is built as a single-file implementation with:
 
 Make sure you have installed:
 
-Python 3.11+
-uv package manager
-A Gemini API key from Google AI Studio
+1. Python 3.11+
+2. uv package manager
+3. A Gemini API key from Google AI Studio
 
 ```bash
 # 1. Clone the repo
